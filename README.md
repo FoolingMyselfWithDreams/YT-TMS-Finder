@@ -45,8 +45,7 @@ The necessary code was already available, I just made them work together.
 - Or use "# Reset Fingerprint Database.bat" to delete all songs from the database.
 - "# Get Database Info" gives you more insight about the state of the database.
 
-- In order to use the new URL file feature, add multiple channel or playlist links to the file called urls.txt
-The program will work through them one after another.
+- In order to use the new URL file feature, add multiple channel or playlist links to the file called "urls.txt". The program will work through them one after another.
 
 
 ### Usage in cmd: 
