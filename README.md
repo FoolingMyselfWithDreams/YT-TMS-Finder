@@ -17,7 +17,7 @@ New features:
 - Check multiple channels (-uf option)
 - Check playlists
 - New video URL gathering (browser automation gathering still available to use)
-- Accepts .flac and .wav files now
+- Accepts mp3, .flac and .wav files now
 - User queries for easier usage
 - Makes a copy of audio files, converts the copy to .mp3 with 320k bitrate and 44100 kHz sample rate to make the fingerprints always comparable (Fingerprinting audio files with
   different sample rates and bitrates than the audio on YouTube previously caused fingerprints to not correctly match with downloaded songs)
