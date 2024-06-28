@@ -29,7 +29,10 @@ class FileReader(object):
         songname, extension = os.path.splitext(os.path.basename(self.filename))
 
         try:
-            audiofile = AudioSegment.from_file(self.filename)
+            if extension == ".mp3":
+                audiofile = AudioSegment.from_file(self.filename, format="mp3")
+            elif extension == ".m4a":
+                audiofile = AudioSegment.from_file(self.filename, format="m4a")
 
             if limit:
                 audiofile = audiofile[: limit * 1000]

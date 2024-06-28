@@ -6,6 +6,10 @@ colorama.init()
 from libs.db import Database
 from libs.config import get_config
 from libs.utils import grouper
+import time
+import os
+from threading import Lock
+lock= Lock()
 
 
 class SqliteDatabase(Database):
@@ -21,7 +25,9 @@ class SqliteDatabase(Database):
         self.conn = sqlite3.connect(config["db.file"], check_same_thread=False)
         self.conn.text_factory = str
 
+        lock.acquire(True)
         self.cur = self.conn.cursor()
+        lock.release()
 
         #cprint("sqlite - connection opened", "yellow")
 
@@ -31,15 +37,23 @@ class SqliteDatabase(Database):
         #cprint("sqlite - connection has been closed", "yellow")
 
     def query(self, query, values=[]):
+        lock.acquire(True)
         self.cur.execute(query, values)
+        lock.release()
 
     def executeOne(self, query, values=[]):
+        lock.acquire(True)
         self.cur.execute(query, values)
-        return self.cur.fetchone()
+        row = self.cur.fetchone()
+        lock.release()
+        return row
 
     def executeAll(self, query, values=[]):
+        lock.acquire(True)
         self.cur.execute(query, values)
-        return self.cur.fetchall()
+        rows = self.cur.fetchall()
+        lock.release()
+        return rows
 
     def buildSelectQuery(self, table, params):
         conditions = []
@@ -70,10 +84,13 @@ class SqliteDatabase(Database):
 
         query = "INSERT INTO songs (%s) VALUES (?, ?)" % (keys)
 
+        lock.acquire(True)
         self.cur.execute(query, values)
         self.conn.commit()
+        lastrowid = self.cur.lastrowid
+        lock.release()
 
-        return self.cur.lastrowid
+        return lastrowid
 
     def insertMany(self, table, columns, values, split_size=800):
         for split_values in grouper(values, split_size):
@@ -81,7 +98,9 @@ class SqliteDatabase(Database):
                 table,
                 ", ".join(columns),
             )
+            lock.acquire(True)
             self.cur.executemany(query, split_values)
+            lock.release()
 
         self.conn.commit()
 
@@ -97,20 +116,27 @@ class SqliteDatabase(Database):
         query = '''CREATE TABLE IF NOT EXISTS checked_ids
              (id TEXT)'''
         
+        lock.acquire(True)
         self.cur.execute(query)
+        lock.release()
         self.conn.commit()
     
     def add_checked_id(self, watch_id):
         if not self.in_checked_ids(watch_id):
             query = f"INSERT INTO checked_ids VALUES ('{watch_id}');"
+            lock.acquire(True)
             self.cur.execute(query)
+            lock.release()
             self.conn.commit()
         
     def in_checked_ids(self, watch_id):
+        lock.acquire(True)
         res = self.cur.execute(f"SELECT 1 FROM checked_ids WHERE watch_id = '{watch_id}'")
         if res.fetchall() != []:
+            lock.release()
             return True
         else:
+            lock.release()
             return False
     
     '''

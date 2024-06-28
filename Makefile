@@ -16,7 +16,7 @@ stat:
 	@python get-database-stat.py
 
 fingerprint-songs: clean
-	@python collect-fingerprints-of-songs.py
+	@python collect-fingerprints.py
 
 recognize-listen: clean
 	@python recognize-from-microphone.py -s $(seconds)

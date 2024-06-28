@@ -1,6 +1,7 @@
+import sys
 import math
 from itertools import zip_longest
-from termcolor import colored
+from termcolor import *
 import libs.fingerprint as fingerprint
 
 
@@ -105,13 +106,18 @@ def align_matches(db, matches):
         5,
     )
 
-    return {
+    try:
+        return {
         "SONG_ID": song_id,
         "SONG_NAME": songM[1],
         "CONFIDENCE": largest_count,
         "OFFSET": int(largest),
         "OFFSET_SECS": nseconds,
     }
+    except TypeError:
+        cprint("Error: Song database is likely empty.", "red")
+        sys.exit()
+
 
 
 def print_match_results(db, matches, filename=None):
