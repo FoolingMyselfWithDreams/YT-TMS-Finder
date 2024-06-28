@@ -4,11 +4,19 @@ To find unidentified music on YouTube.
 
 ![](https://i.ibb.co/jWpv8rN/Windows-Terminal-d-TKLealgu-T.png)
 
+## 
+
+
+The text beyond this message is mainly copied from the original with a couple of edits to reflect the new state of the code.
+
+
+- FoolingMyselfWithDreams
+
 ## What you need to know
 
-This code was made in an effort to make it easier to find the song that has been dubbed 'The Most Mysterious Song on the Internet' as well as other unknown songs. This tool makes it possible to search YouTube channels for songs without having to manually check the videos. 
+This code was made in an effort to make it easier to find the song that has been dubbed 'The Most Mysterious Song on the Internet' as well as other unknown songs. This tool makes it possible to search YouTube channels for songs without having to manually check the videos.
 
-This is done by crawling the YouTube channel, downloading a video if it is under 4 minutes long, fingerprinting the audio, and checking it against a database (which is included in this program). It was developed for Windows so people don't have to install virtual machines or WSL subsystems or anything like that, and also because my university administrator doesn't allow changing operating systems. But it should work on Linux as well.
+This is done by gathering all video URLs of a YouTube channel or playlist, downloading a video, fingerprinting the audio, and checking it against a database (which is included in this program). It was developed for Windows so people don't have to install virtual machines or WSL subsystems or anything like that, and also because my university administrator doesn't allow changing operating systems. But it should work on Linux as well.
 
 The necessary code was already available, I just made them work together.
 
@@ -17,23 +25,25 @@ The necessary code was already available, I just made them work together.
 - Special thanks and credit to Itspoma, the creator of the audio fingerprinting and recognition code.
 - Thanks to nrsyed for helping with code optimisation.
 - Thanks to Tamago-iku for contributing.
-
 ## How to use
 Usage: 
 ```
-find_stable.py [-h] [-i] [-s] [-v] [-t THRESHOLD] [-m THREADS] [-c CHANNEL_URL] [-id ID] [-r RESTORE_FILE]
+find_stable.py [-h] [-i] [-s] [-v] [-t THRESHOLD] [-m THREADS] [-c CHANNEL_URL] [-uf URL_FILE] [-id ID] [-r RESTORE_FILE] [-html]
 ```
 1. ```-h``` for the help message.
 1. ```-i``` ignore videos that were checked in another session already.
-1. ```-s``` download only first 30 seconds of video. This speeds up the download and fingerprinting.
+1. ```-s``` download only first 15 seconds of video. This speeds up the download and fingerprinting. [CAUTION: -s only makes sense to use if you know that you at least have the intro of a song fingerprinted and if you're only checking videos that have one song]
 1. ```-v``` for verbosity.
 1. ```-t``` to set the hash matches threshold (at which you will be notified of a match)
-1. ```-m``` multithreading, max number of videos to check at the same time, 3 is optimal
+1. ```-m``` multithreading, max number of videos to check at the same time, 3 is optimal & recommended
 1. ```-c``` to supply channel URL from command line, if this is not supplied, it will be asked automatically.
 1. ```-id``` to check only one video ID
 1. ```-r``` for restore file (This restore file has to be the html source of a youtube channel)
 1. ```-mnd``` set the min duration of videos that you want to check
-1. ```-mxd``` set the max duration of videos that you want to check 
+1. ```-mxd``` set the max duration of videos that you want to check
+1. ```-html``` set the max duration of videos that you want to check
+1. ```-mxd``` force the alternative way of gathering URLs and video durations through browser automation
+   
 
 **The restore file is automatically created after the first time you grab the HTML of a YouTube channel.**
 
@@ -42,13 +52,13 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 ## How to set up on Windows
 
 1. Make sure you have Python 3 installed.
-1. Open a command prompt and install the requirements:
+1. Open a command prompt (Press Windows Key, search for CMD) and install the requirements:
 ```
 > pip install -r requirements.txt
 ```
 3. If you have problems installing PyAudio, skip to the next step.
 
-4. To make the installation easier, we'll use chocolately which is just like brew, pip, or other module utilities. Open up CMD in the administrator mode and do this command:
+4. To make the installation easier, we'll use chocolately which is just like brew, pip, or other module utilities. Press the Windows Key, search for CMD, right click on CMD and choose to open it in Administrator mode, copy & paste this command and press Enter:
 ```
 @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command " [System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin" 
 ```
@@ -67,7 +77,7 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 - Go to https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio and download the .whl file for your version of python.
 Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file and do ```pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl``` or whatever .whl file suits your version of python. Now you have it installed.
 
-8. Now do: ```python find_stable.py```
+8. Now double click on "# TMS Finder" or type the following into CMD and press Enter: ```python find_stable.py```
 
 9. Check for any matches! This will be displayed and a file called "MATCHES.txt" will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "misses.txt" as well.
 
@@ -98,10 +108,23 @@ sudo apt install ffmpeg
 
 ## Note
 
-- In case you do ```python reset-database.py```, simply do ```python collect-fingerprints-from-songs.py```.
+- In case you do ```python reset-database.py```, simply do ```python collect-fingerprints.py```.
 - verbosity update and speedmode update coming soon.
 
 ## Updates
+
+### V1.0.5
+Getting everything to a working state
+New features:
+- Check multiple channels (-uf option)
+- Check playlists
+- New video URL gathering (browser automation gathering still available to use)
+- User queries for easier usage
+- More .bats
+- Bug fixes
+  
+
+### V1.0.4
 
 ### V1.0.4-beta
 - Added multithreading
@@ -121,7 +144,6 @@ sudo apt install ffmpeg
 - Verbosity: use ```-v``` (recommended)
 - Now tells you how far the progress is.
 - Bug fixes.
-
 
 ### V1.0.2
 - Channel url can now also be given as command line argument (supply ```-c CHANNEL_URL```)
@@ -169,21 +191,25 @@ Confidence of a match: 8.
 ```
 
 ## Common problems
-1. Python is not being recognised as an internal command. FIX by adding Python interpreter folder to the PATH variable.
+1. Python is not being recognised as an internal command.
+   FIX by adding Python interpreter folder to the PATH variable.
 
-1. Problem with Selenium and chromedriver. For Windows please do step 3 and 4 of the setup!
+2. Problem with Selenium and chromedriver.
+   For Windows please do step 3 and 4 of the setup!
 
-1. Problem with ffmpeg. Install ffmpeg in step 6.
+3. Problem with ffmpeg.
+   Install ffmpeg in step 6.
 
 ## Contributing
 
 If you'd like to contribute, these are the things that still need to be done:
-- Use youtube-dl python module instead of actual youtube-dl.exe file. This allows us to remove the youtube-dl folder in this repo.
-- Make script compatible with youtube-data API (and make this option optional), so you don't have to open the channel URL in a browser to grab the HTML and then obtain the videos.
-- Include timestamps in MATCHES.txt (DONE)
-- Add max_duration argument for the argparser
+- Use yt-dlp python module instead of actual yt-dlp.exe file. This allows us to remove the yt-dlp folder in this repo.
 - Finish FAQ section in this readme
 - Create and test setup file for Windows and Linux to make installation quicker.
+- Make it easier to get started (Python installation etc.)
+- Automatically create and fingerprint versions of audio files with different pitch
+- Test more on Linux
+- More pictures?
 
 ## FAQ
 - **How to check a YouTube channel?**
@@ -194,8 +220,6 @@ If you'd like to contribute, these are the things that still need to be done:
 - **Can I add my own songs to the database?**
 
   Yes, itspoma made this possible. Just upload that mp3 file into the "mp3" folder. Now do `python collect-fingerprints-of-songs.py`. Any song in the 'mp3' folder that was previously added already will be skipped. The song is now added into the database and can be recognised. For more info please check out [itspoma's repo](https://github.com/itspoma/audio-fingerprint-identifying-python).
-  
-  Note: **Make sure that the audio you're adding to the database was downloaded from YouTube!** This has to do with how YouTube processes audio. If you download something from YouTube and compare it to something downloaded from YouTube, you are likely not to miss a match. If the audio you put in the database is not download from YouTube, you might see that the bot does not find a match. I know this is very strange but unfortunately I have no idea why this happens.
   
 - **Is it storage efficient?**
   
@@ -216,10 +240,10 @@ If you'd like to contribute, these are the things that still need to be done:
 
 - **How does it work in detail?**
   
-  First we have to get all the video IDs from a YouTube channel. This is not possbile by simply using requests or beautifulsoup. We would have to open the browser ourselves going down all the way to the bottom of the page, but we can also do this with a webbot so we don't have to do it ourselves. 
+  First we have to get all the video IDs from a YouTube channel. This is not possible by simply using requests or beautifulsoup. We would have to open the browser ourselves going down all the way to the bottom of the page, but we can also do this with a webbot so we don't have to do it ourselves.
   
   Then it downloads the HTML source. From this HTML file we can obtain all the video IDs and their time length without the need of the YouTube API (which costs money). For every video the following is done:
-  1. If the video length is less than 4 minutes, download the audio from the video in mp3 format using youtube-dl.
+  1. Download the audio from the video in mp3 format using yt-dlp.
   2. Fingerprint the song.
   3. Match the fingerprint against the database.
   4. If there are more than 100 hashes that match, print this on the screen and add it to a "MATCHES.txt" file.
