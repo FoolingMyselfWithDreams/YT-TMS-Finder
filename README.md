@@ -2,9 +2,7 @@
 
 To find unidentified music on YouTube.
 
-![](https://i.ibb.co/jWpv8rN/Windows-Terminal-d-TKLealgu-T.png)
-
-## 
+##
 This is a continuation of the TMS Finder made by Ben-0-mad.
 The text beyond the section "What you need to know" is mainly copied from the original with a couple of edits to reflect the new state of the code.
 
@@ -41,16 +39,20 @@ The necessary code was already available, I just made them work together.
 - Thanks to Tamago-iku for contributing.
   
 ## How to use
-General usage:
+### General usage:
 Double click # TMS Finder.bat and follow the instructions.
+
 To add more songs to the database, add .mp3, .wav or .flac audio files to the folder called "samples" and then open "# Collect Song Fingerprints.bat"
+
 or use "# Reset Fingerprint Database.bat" to delete all songs from the database.
+
 "# Get Database Info" gives you more insight about the state of the database.
 
 In order to use the new URL file feature, add multiple channel or playlist links to the file called urls.txt
 The program will work through them one after another.
 
-Usage in cmd: 
+
+### Usage in cmd: 
 ```
 find_stable.py [-h] [-i] [-s] [-v] [-t THRESHOLD] [-m THREADS] [-c CHANNEL_URL] [-uf ANY] [-id ID] [-r RESTORE_FILE] [-html]
 ```
@@ -150,7 +152,6 @@ New features:
   different sample rates and bitrates than the audio on YouTube previously caused fingerprints to not correctly match with downloaded songs)
 - More .bats
 - Bug fixes
-  
 
 ### V1.0.4
 
