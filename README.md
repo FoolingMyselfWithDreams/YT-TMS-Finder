@@ -16,7 +16,7 @@ Getting everything to a working state
 New features:
 - Check multiple channels (-uf option)
 - Check playlists
-- New video URL gathering (browser automation gathering still available to use)
+- New and faster video URL gathering (browser automation gathering still available to use)
 - Besides .mp3, accepts .flac and .wav files now
 - User queries for easier usage
 - Makes a copy of audio files, converts the copy to .mp3 with 320k bitrate and 44100 kHz sample rate to make the fingerprints always comparable (Fingerprinting audio files with
