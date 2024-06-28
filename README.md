@@ -74,7 +74,7 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 
 ## How to set up on Windows
 
-1. Make sure you have Python 3 installed.
+1. Make sure you have [Python 3](https://www.python.org/downloads/) installed.
 1. Open a command prompt (Press Windows Key, search for CMD) and install the requirements:
 ```
 > pip install -r requirements.txt
@@ -107,7 +107,7 @@ Then open up a command prompt (press Windows key and type CMD). Navigate to the 
 
 ## How to set up on Linux
 
-1. Make sure you have Python 3 installed.
+1. Make sure you have [Python 3](https://www.python.org/downloads/) installed.
 1. Open a terminal and install the requirements:
 ```
 $ pip install -r requirements.txt
