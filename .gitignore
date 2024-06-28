@@ -1,5 +1,7 @@
 *.pyc
 restore_file.html
 3thread.bat
+MATCHES.txt
+missed.txt
 *.webm
 *.wav
