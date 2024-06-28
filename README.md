@@ -101,7 +101,7 @@ Then open up a command prompt (press Windows key and type CMD). Navigate to the 
 
 8. Now double click on "# TMS Finder" or type the following into CMD and press Enter: ```python find_stable.py```
 
-9. Check for any matches! They will be displayed inside a file called "MATCHES.txt" which will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "misses.txt" as well.
+9. Check for any matches! They will be displayed inside a file called "MATCHES.txt" which will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "missed.txt" as well.
 
 
 ## How to set up on Linux
