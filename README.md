@@ -43,7 +43,7 @@ The necessary code was already available, I just made them work together.
 ## How to use
 General usage:
 Double click # TMS Finder.bat and follow the instructions.
-To add more songs to the database, open "# Collect Song Fingerprints.bat"
+To add more songs to the database, add .mp3, .wav or .flac audio files to the folder called "samples" and then open "# Collect Song Fingerprints.bat"
 or use "# Reset Fingerprint Database.bat" to delete all songs from the database.
 "# Get Database Info" gives you more insight about the state of the database.
 
