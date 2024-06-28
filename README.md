@@ -6,13 +6,15 @@ To find unidentified music on YouTube.
 
 ## 
 This is a continuation of the TMS Finder made by Ben-0-mad.
-The text beyond the section "## What you need to know" is mainly copied from the original with a couple of edits to reflect the new state of the code.
+The text beyond the section "What you need to know" is mainly copied from the original with a couple of edits to reflect the new state of the code.
 
 See you somewhere!
+
 --- FoolingMyselfWithDreams
 
 ### V1.0.5
 Getting everything to a working state
+
 New features:
 - Check multiple channels (-uf option)
 - Check playlists
@@ -39,6 +41,14 @@ The necessary code was already available, I just made them work together.
 - Thanks to Tamago-iku for contributing.
   
 ## How to use
+General usage:
+Double click # TMS Finder.bat and follow the instructions.
+To add more songs to the database, open "# Collect Song Fingerprints.bat"
+or use "# Reset Fingerprint Database.bat" to delete all songs from the database.
+"# Get Database Info" gives you more insight about the state of the database.
+
+In order to use the new URL file feature, add multiple channel or playlist links to the file called urls.txt
+The program will work through them one after another.
 
 Usage in cmd: 
 ```
@@ -129,11 +139,15 @@ sudo apt install ffmpeg
 
 ### V1.0.5
 Getting everything to a working state
+
 New features:
 - Check multiple channels (-uf option)
 - Check playlists
 - New video URL gathering (browser automation gathering still available to use)
+- Accepts .flac and .wav files now
 - User queries for easier usage
+- Makes a copy of audio files, converts the copy to .mp3 with 320k bitrate and 44100 kHz sample rate to make the fingerprints always comparable (Fingerprinting audio files with
+  different sample rates and bitrates than the audio on YouTube previously caused fingerprints to not correctly match with downloaded songs)
 - More .bats
 - Bug fixes
   
