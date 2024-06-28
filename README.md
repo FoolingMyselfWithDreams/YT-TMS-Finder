@@ -5,12 +5,24 @@ To find unidentified music on YouTube.
 ![](https://i.ibb.co/jWpv8rN/Windows-Terminal-d-TKLealgu-T.png)
 
 ## 
+This is a continuation of the TMS Finder made by Ben-0-mad.
+The text beyond the section "## What you need to know" is mainly copied from the original with a couple of edits to reflect the new state of the code.
 
+See you somewhere!
+--- FoolingMyselfWithDreams
 
-The text beyond this message is mainly copied from the original with a couple of edits to reflect the new state of the code.
-
-
-- FoolingMyselfWithDreams
+### V1.0.5
+Getting everything to a working state
+New features:
+- Check multiple channels (-uf option)
+- Check playlists
+- New video URL gathering (browser automation gathering still available to use)
+- Accepts .flac and .wav files now
+- User queries for easier usage
+- Makes a copy of audio files, converts the copy to .mp3 with 320k bitrate and 44100 kHz sample rate to make the fingerprints always comparable (Fingerprinting audio files with
+  different sample rates and bitrates than the audio on YouTube previously caused fingerprints to not correctly match with downloaded songs)
+- More .bats
+- Bug fixes
 
 ## What you need to know
 
@@ -25,24 +37,26 @@ The necessary code was already available, I just made them work together.
 - Special thanks and credit to Itspoma, the creator of the audio fingerprinting and recognition code.
 - Thanks to nrsyed for helping with code optimisation.
 - Thanks to Tamago-iku for contributing.
+  
 ## How to use
-Usage: 
+
+Usage in cmd: 
 ```
-find_stable.py [-h] [-i] [-s] [-v] [-t THRESHOLD] [-m THREADS] [-c CHANNEL_URL] [-uf URL_FILE] [-id ID] [-r RESTORE_FILE] [-html]
+find_stable.py [-h] [-i] [-s] [-v] [-t THRESHOLD] [-m THREADS] [-c CHANNEL_URL] [-uf ANY] [-id ID] [-r RESTORE_FILE] [-html]
 ```
-1. ```-h``` for the help message.
-1. ```-i``` ignore videos that were checked in another session already.
+1. ```-h``` for the help message
+1. ```-i``` ignore videos that were checked in another session already
 1. ```-s``` download only first 15 seconds of video. This speeds up the download and fingerprinting. [CAUTION: -s only makes sense to use if you know that you at least have the intro of a song fingerprinted and if you're only checking videos that have one song]
-1. ```-v``` for verbosity.
+1. ```-v``` for verbosity / detailed messaging
 1. ```-t``` to set the hash matches threshold (at which you will be notified of a match)
 1. ```-m``` multithreading, max number of videos to check at the same time, 3 is optimal & recommended
-1. ```-c``` to supply channel URL from command line, if this is not supplied, it will be asked automatically.
+1. ```-c``` to supply channel URL from command line, if this is not supplied, it will be asked automatically
+1. ```-uf``` takes links from urls.txt to check multiple channels and playlists one after another
 1. ```-id``` to check only one video ID
 1. ```-r``` for restore file (This restore file has to be the html source of a youtube channel)
 1. ```-mnd``` set the min duration of videos that you want to check
 1. ```-mxd``` set the max duration of videos that you want to check
-1. ```-html``` set the max duration of videos that you want to check
-1. ```-mxd``` force the alternative way of gathering URLs and video durations through browser automation
+1. ```-html``` force the alternative way of gathering URLs and video durations through browser automation
    
 
 **The restore file is automatically created after the first time you grab the HTML of a YouTube channel.**
@@ -208,6 +222,9 @@ If you'd like to contribute, these are the things that still need to be done:
 - Create and test setup file for Windows and Linux to make installation quicker.
 - Make it easier to get started (Python installation etc.)
 - Automatically create and fingerprint versions of audio files with different pitch
+- Download .m4a audio directly rather than download video and extract audio.
+  I already do this with files that have the wrong format, but this could be added in general since comparing .mp3 with .m4a fingerprint hashes seems to work fine (needs additional tests though)
+- Create a simple GUI?
 - Test more on Linux
 - More pictures?
 
