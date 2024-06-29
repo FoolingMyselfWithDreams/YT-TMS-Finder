@@ -230,13 +230,20 @@ Confidence of a match: 8.
 ```
 
 ## Common problems
-1. Python is not being recognised as an internal command.
-   FIX by adding Python interpreter folder to the PATH variable.
+1. ### Python is not being recognised as an internal command.
+   FIX by adding Python.exe folder to the PATH variable. It's possible to do this through the Python installer.
 
-2. Problem with Selenium and chromedriver.
+On Windows, you can also do this by pressing the Windows Key, search for "Variables" or "Path". Click on the option that says System Environment Variable. Once you did, click on the button that says Environment Variables which is on the very bottom of the window. Double click on "Path" in the top section, click on the button "New" in the top right. Copy & Paste the folder path that has python.exe in it (for example, this folder could be called C:\Users\PC\AppData\Local\Programs\Python\Python312\ ). Additionally, add the folder Scripts which you can find in the same folder as python.exe (for example, this folder could be called C:\Users\PC\AppData\Local\Programs\Python\Python312\Scripts )
+If everything went well, you should have successfully added Python to PATH now and the error should disappear.
+
+It still says "Python is not being recognised as an internal command" ?
+Press the Windows key and type in app alias, open the one below PC Settings.
+This list might contain multiple python.exe, try disabling all but one and try this with every single one until you find the one that makes the error disappear.
+
+2. ### Problem with Selenium and chromedriver.
    For Windows please do step 3 and 4 of the setup!
 
-3. Problem with ffmpeg.
+3. ### Problem with ffmpeg.
    Install ffmpeg in step 6.
 
 ## Contributing
