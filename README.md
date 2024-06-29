@@ -6,7 +6,7 @@ To find unidentified music on YouTube.
 This is a continuation of the TMS Finder made by Ben-0-mad.
 The text beyond the section "What you need to know" is mainly copied from the original with a couple of edits to reflect the new state of the code.
 
-Please read the section on [How To Install](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-set-up-on-windows) and [General Usage](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-use) to get started
+Please read the section on [How To Install](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-set-up-on-windows) and [General Usage](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-use) to get started.
 
 See you somewhere!
 
@@ -88,6 +88,7 @@ press Enter and then:
 pip install -r requirements.txt
 ```
 If it says "Python is not being recognised as an internal command", please have a look at [this](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#python-is-not-being-recognised-as-an-internal-command).
+
 6. If you have problems installing PyAudio, skip to the next step.
 
 7. To make the installation easier, we'll use chocolatey which is just like brew, pip, or other module utilities. Press the Windows Key, search for CMD, right click on CMD and choose to open it in Administrator mode, copy & paste this command and press Enter:
@@ -112,7 +113,7 @@ choco install ffmpeg -y
 
 10. If you had any problems with installing PyAudio, that's a common issue. The solution to downloading PyAudio if the normal ```pip install pyaudio``` fails, is this:
 - Go to https://pypi.org/project/PyAudio/#files and download the .whl file for your version of Python.
-Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file (cd "folder path" (without the quotes)) and do ```pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl``` or whatever .whl file suits your version of Python. Now you have it installed.
+Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file (cd "insert folder path" (without the quotes)) and do ```pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl``` or whatever .whl file suits your version of Python. Now you have it installed.
 
 11. Now double click on "# TMS Finder" or type the following into CMD and press Enter: ```python find_stable.py```
 
