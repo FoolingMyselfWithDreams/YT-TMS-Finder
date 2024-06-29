@@ -30,7 +30,7 @@ currentDate = date(now.year, now.month, now.day)
 start_time = tm.time()
 
 
-print("""
+print(r"""
 Welcome to...
 
 __   _______   ________  ___ _____  ______ _           _           
