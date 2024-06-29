@@ -54,7 +54,7 @@ find_stable.py [-h] [-i] [-s] [-v] [-t THRESHOLD] [-m THREADS] [-c CHANNEL_URL] 
 ```
 1. ```-h``` for the help message
 1. ```-i``` ignore videos that were checked in another session already
-1. ```-s``` download only first 15 seconds of video. This speeds up the download and fingerprinting. [CAUTION: -s only makes sense to use if you know that you at least have the intro of a song fingerprinted and if you're only checking videos that have one song]
+1. ```-s``` download only first 15 seconds of video. This speeds up the download and fingerprinting. [CAUTION: -s only makes sense to use if you know that you at least have the intro of a song fingerprinted, or if the intro musically is similar to parts of the rest of the song, and if you're only checking videos that have one song]
 1. ```-v``` for verbosity / detailed messaging
 1. ```-t``` to set the hash matches threshold (at which you will be notified of a match)
 1. ```-m``` multithreading, max number of videos to check at the same time, 3 is optimal & recommended
@@ -76,28 +76,33 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 1. Make sure you have [Python 3](https://www.python.org/downloads/) installed. Click "Add Python to your PATH" during the install.
 1. Open a command prompt (Press Windows Key, search for CMD) and install the requirements:
 ```
-> pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 3. If you have problems installing PyAudio, skip to the next step.
 
-4. To make the installation easier, we'll use chocolately which is just like brew, pip, or other module utilities. Press the Windows Key, search for CMD, right click on CMD and choose to open it in Administrator mode, copy & paste this command and press Enter:
+4. To make the installation easier, we'll use chocolatey which is just like brew, pip, or other module utilities. Press the Windows Key, search for CMD, right click on CMD and choose to open it in Administrator mode, copy & paste this command and press Enter:
 ```
 @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command " [System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin" 
 ```
 
-5. Great! Now you have Chocolately installed. Next we'll install the chromedriver. If you already have the chromedriver you can skip this step. Close the previous CMD window and open a new CMD in administrator mode, then run:
+5. Great! Now you have Chocolately installed. Next we'll install the chromedriver and bs4 (Beautiful Soup). If you already have the chromedriver you can skip this step. Close the previous CMD window and open a new CMD in administrator mode, then run:
 ``` 
-> choco install chromedriver  
+choco install chromedriver  
+```
+When it asks you to run the script, type in A and press Enter.
+Afterwards type in this and press Enter:
+```
+pip install bs4  
 ```
 
 6. In order to download audio from YouTube we'll need ffmpeg. We'll download this as well. If you already have ffmpeg you can skip this step. In the same CMD window, run:
 ``` 
-> choco install ffmpeg -y
+choco install ffmpeg -y
 ```
 
 7. If you had any problems with installing PyAudio, that's a common issue. The solution to downloading PyAudio if the normal ```pip install pyaudio``` fails, is this:
-- Go to https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio and download the .whl file for your version of python.
-Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file and do ```pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl``` or whatever .whl file suits your version of python. Now you have it installed.
+- Go to (https://pypi.org/project/PyAudio/#files) and download the .whl file for your version of Python.
+Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file (cd "folder path" (without the quotes)) and do ```pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl``` or whatever .whl file suits your version of Python. Now you have it installed.
 
 8. Now double click on "# TMS Finder" or type the following into CMD and press Enter: ```python find_stable.py```
 
