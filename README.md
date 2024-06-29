@@ -77,8 +77,8 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 
 1. Make sure you have [Python 3](https://www.python.org/downloads/) installed. Click "Add Python to your PATH" during the install.
 2. Install any of the programs that opens .zip files.
-3. Download the newest release of TMS Finder by clicking [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/releases) 
-4. Extract the file (right click file and click "Extract here")
+3. Find the newest release of TMS Finder by clicking [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/releases). You can download it by clicking on "Source code (zip)" on the bottom.
+4. Extract the file (right click file and click "Extract here").
 5. Open a command prompt (Press Windows Key, search for CMD) and install the requirements by typing:
 ```
 cd "insert folder path to the requirements.txt file" (without quotes)
