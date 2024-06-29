@@ -5,6 +5,7 @@ To find unidentified music on YouTube.
 ##
 This is a continuation of the TMS Finder made by Ben-0-mad.
 The text beyond the section "What you need to know" is mainly copied from the original with a couple of edits to reflect the new state of the code.
+Please read the section on [How To Install](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-set-up-on-windows) and [General Usage](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-use) to get started
 
 See you somewhere!
 
