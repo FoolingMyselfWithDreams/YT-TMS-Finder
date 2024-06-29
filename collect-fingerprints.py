@@ -17,11 +17,11 @@ if __name__ == "__main__":
     # fingerprint all files in a directory
 
     for filename in os.listdir(path):
-
-        if filename.endswith((".flac", ".wav", ".mp3")): #.ogg
+        songname, extension = os.path.splitext(os.path.basename(filename))
+        if extension.lower() in [".flac", ".wav", ".mp3"]: #.ogg
             # convert all audio files to mp3 and 44kHz to normalize the fingerprints
             song = AudioSegment.from_file(path + filename)
-            if(filename.endswith(".mp3") and song.frame_rate == 44100):
+            if extension.lower() == ".mp3" and song.frame_rate == 44100:
                 reader = FileReader(path + filename)
                 pass
             else:
