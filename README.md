@@ -87,6 +87,7 @@ press Enter and then:
 ```
 pip install -r requirements.txt
 ```
+If it says "Python is not being recognised as an internal command", please have a look at [this](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#python-is-not-being-recognised-as-an-internal-command).
 6. If you have problems installing PyAudio, skip to the next step.
 
 7. To make the installation easier, we'll use chocolatey which is just like brew, pip, or other module utilities. Press the Windows Key, search for CMD, right click on CMD and choose to open it in Administrator mode, copy & paste this command and press Enter:
@@ -231,9 +232,15 @@ Confidence of a match: 8.
 
 ## Common problems
 1. ### Python is not being recognised as an internal command.
-   FIX by adding Python.exe folder to the PATH variable. It's possible to do this through the Python installer.
+FIX by adding Python.exe folder to the PATH variable. It's possible to do this through the Python installer.
 
-On Windows, you can also do this by pressing the Windows Key, search for "Variables" or "Path". Click on the option that says System Environment Variable. Once you did, click on the button that says Environment Variables which is on the very bottom of the window. Double click on "Path" in the top section, click on the button "New" in the top right. Copy & Paste the folder path that has python.exe in it (for example, this folder could be called C:\Users\PC\AppData\Local\Programs\Python\Python312\ ). Additionally, add the folder Scripts which you can find in the same folder as python.exe (for example, this folder could be called C:\Users\PC\AppData\Local\Programs\Python\Python312\Scripts )
+On Windows, you can also do this by pressing the Windows Key, search for "Variables" or "Path". 
+Click on the option that says System Environment Variable. 
+Once you did, click on the button that says Environment Variables which is on the very bottom of the window. Double click on "Path" in the top section, click on the button "New" in the top right. 
+Copy & Paste the folder path that has python.exe in it 
+(for example, this folder could be called C:\Users\PC\AppData\Local\Programs\Python\Python312\ ). 
+Additionally, add the folder Scripts which you can find in the same folder as python.exe 
+(for example, this folder could be called C:\Users\PC\AppData\Local\Programs\Python\Python312\Scripts )
 If everything went well, you should have successfully added Python to PATH now and the error should disappear.
 
 It still says "Python is not being recognised as an internal command" ?
