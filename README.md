@@ -74,18 +74,23 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 ## How to set up on Windows
 
 1. Make sure you have [Python 3](https://www.python.org/downloads/) installed. Click "Add Python to your PATH" during the install.
-1. Open a command prompt (Press Windows Key, search for CMD) and install the requirements:
+2. Install any of the programs that opens .zip files.
+3. Extract the file (right click file and click "Extract here")
+4. Open a command prompt (Press Windows Key, search for CMD) and install the requirements:
+```
+cd "insert folder path to the requirements.txt file" (without quotes)
+```
 ```
 pip install -r requirements.txt
 ```
-3. If you have problems installing PyAudio, skip to the next step.
+5. If you have problems installing PyAudio, skip to the next step.
 
-4. To make the installation easier, we'll use chocolatey which is just like brew, pip, or other module utilities. Press the Windows Key, search for CMD, right click on CMD and choose to open it in Administrator mode, copy & paste this command and press Enter:
+6. To make the installation easier, we'll use chocolatey which is just like brew, pip, or other module utilities. Press the Windows Key, search for CMD, right click on CMD and choose to open it in Administrator mode, copy & paste this command and press Enter:
 ```
 @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command " [System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin" 
 ```
 
-5. Great! Now you have Chocolately installed. Next we'll install the chromedriver and bs4 (Beautiful Soup). If you already have the chromedriver you can skip this step. Close the previous CMD window and open a new CMD in administrator mode, then run:
+7. Great! Now you have Chocolately installed. Next we'll install the chromedriver and bs4 (Beautiful Soup). If you already have the chromedriver you can skip this step. Close the previous CMD window and open a new CMD in administrator mode, then run:
 ``` 
 choco install chromedriver  
 ```
@@ -95,18 +100,18 @@ Afterwards type in this and press Enter:
 pip install bs4  
 ```
 
-6. In order to download audio from YouTube we'll need ffmpeg. We'll download this as well. If you already have ffmpeg you can skip this step. In the same CMD window, run:
+8. In order to download audio from YouTube we'll need ffmpeg. We'll download this as well. If you already have ffmpeg you can skip this step. In the same CMD window, run:
 ``` 
 choco install ffmpeg -y
 ```
 
-7. If you had any problems with installing PyAudio, that's a common issue. The solution to downloading PyAudio if the normal ```pip install pyaudio``` fails, is this:
+9. If you had any problems with installing PyAudio, that's a common issue. The solution to downloading PyAudio if the normal ```pip install pyaudio``` fails, is this:
 - Go to (https://pypi.org/project/PyAudio/#files) and download the .whl file for your version of Python.
 Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file (cd "folder path" (without the quotes)) and do ```pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl``` or whatever .whl file suits your version of Python. Now you have it installed.
 
-8. Now double click on "# TMS Finder" or type the following into CMD and press Enter: ```python find_stable.py```
+10. Now double click on "# TMS Finder" or type the following into CMD and press Enter: ```python find_stable.py```
 
-9. Check for any matches! They will be displayed inside a file called "MATCHES.txt" which will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "missed.txt" as well.
+11. Check for any matches! They will be displayed inside a file called "MATCHES.txt" which will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "missed.txt" as well.
 
 
 ## How to set up on Linux
