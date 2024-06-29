@@ -106,7 +106,7 @@ choco install ffmpeg -y
 ```
 
 9. If you had any problems with installing PyAudio, that's a common issue. The solution to downloading PyAudio if the normal ```pip install pyaudio``` fails, is this:
-- Go to (https://pypi.org/project/PyAudio/#files) and download the .whl file for your version of Python.
+- Go to https://pypi.org/project/PyAudio/#files and download the .whl file for your version of Python.
 Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file (cd "folder path" (without the quotes)) and do ```pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl``` or whatever .whl file suits your version of Python. Now you have it installed.
 
 10. Now double click on "# TMS Finder" or type the following into CMD and press Enter: ```python find_stable.py```
