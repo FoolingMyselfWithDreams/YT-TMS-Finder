@@ -7,6 +7,7 @@ This is a continuation of the TMS Finder made by Ben-0-mad.
 The text beyond the section "What you need to know" is mainly copied from the original with a couple of edits to reflect the new state of the code.
 
 Please read the section on [How To Install](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-set-up-on-windows) and [General Usage](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-use) to get started.
+Check out [Common Problems](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#common-problems) if you encounter any problems or errors.
 
 See you somewhere!
 
@@ -267,12 +268,12 @@ Confidence of a match: 8.
 5. ### [Errno 13] Permission denied
    This could have multiple reasons.
    Usually this error means that Windows is set up in a way that doesn't allow the program access to the other files in the folder.
-   - Try right clicking # TMS Finder.bat, click on Properties, then onto the Security tab.
+   - Try right clicking the TMS Finder folder, click on Properties, then onto the Security tab.
    - Click on Users, then the Edit button on the right side. Now select Users again.
    - The program needs at least the following permissions: Modify, Read & execute, Read, and Write.
    You could also pick Full Control and give the program all permissions that way.
 
-   You will have to do this for every .bat file in the folder.
+   If that still doesn't help, you might have to do this for every .bat file in the folder.
 
    Often this error happens because your Windows user account isn't automatically set to have Admin rights. You may want to look up on how to do change this to avoid this type of error in the future entirely.
    
