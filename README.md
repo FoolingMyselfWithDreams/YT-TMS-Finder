@@ -233,23 +233,27 @@ Confidence of a match: 8.
 
 ## Common problems
 1. ### Python is not being recognised as an internal command.
-FIX by adding Python.exe folder to the PATH variable. It's possible to do this through the Python installer.
+    FIX by adding Python.exe folder to the PATH variable. It's possible to do this through the Python installer.
+    
+    On Windows, you can also do this by doing this:
+    
+    - Press the Windows Key, search for "Variables" or "Path". 
+    - Click on the option that says System Environment Variable. 
+    - Once you did, click on the button that says Environment Variables which is on the very bottom of the window. Double click on "Path" in the top section, click on the button "New" in the top right. 
+    - Copy & Paste the folder path that has python.exe in it. 
+      For example, this folder could be called
 
-On Windows, you can also do this by doing this:
+      C:\Users\PC\AppData\Local\Programs\Python\Python312\  
+    - Additionally, add the folder Scripts which you can find in the same folder as python.exe 
+      For example, this folder could be called
 
-- Press the Windows Key, search for "Variables" or "Path". 
-- Click on the option that says System Environment Variable. 
-- Once you did, click on the button that says Environment Variables which is on the very bottom of the window. Double click on "Path" in the top section, click on the button "New" in the top right. 
-- Copy & Paste the folder path that has python.exe in it 
-(for example, this folder could be called C:\Users\PC\AppData\Local\Programs\Python\Python312\ ). 
-- Additionally, add the folder Scripts which you can find in the same folder as python.exe 
-(for example, this folder could be called C:\Users\PC\AppData\Local\Programs\Python\Python312\Scripts )
-- If everything went well, you should have successfully added Python to PATH now and the error should disappear.
-
-It still says "Python is not being recognised as an internal command" ?
-
-Press the Windows key and type in app alias, open the one below PC Settings.
-This list might contain multiple python.exe, try disabling all but one and try this with every single one until you find the one that makes the error disappear.
+      C:\Users\PC\AppData\Local\Programs\Python\Python312\Scripts
+    - If everything went well, you should have successfully added Python to PATH now and the error should disappear.
+    
+    It still says "Python is not being recognised as an internal command" ?
+    
+    Press the Windows key and type in app alias, open the one below PC Settings.
+    This list might contain multiple python.exe, try disabling all but one and try this with every        single one until you find the one that makes the error disappear.
 
 2. ### Problem with Selenium and chromedriver.
    For Windows please do step 3 and 4 of the setup!
@@ -269,6 +273,8 @@ This list might contain multiple python.exe, try disabling all but one and try t
    You could also pick Full Control and give the program all permissions that way.
 
    You will have to do this for every .bat file in the folder.
+
+   Often this error happens because your Windows user account isn't automatically set to have Admin rights. You may want to look up on how to do change this to avoid this type of error in the future entirely.
    
    Your antivirus or firewall could also be blocking the program.
 
