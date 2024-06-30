@@ -263,9 +263,9 @@ This list might contain multiple python.exe, try disabling all but one and try t
 5. ### [Errno 13] Permission denied
    This could have multiple reasons.
    Usually this error means that Windows is set up in a way that doesn't allow the program access to the other files in the folder.
-   Try right clicking # TMS Finder.bat, click on Properties, then onto the Security tab.
-   Click on Users, then the Edit button on the right side. Now select Users again.
-   The program needs at least the following permissions: Modify, Read & execute, Read, and Write.
+   - Try right clicking # TMS Finder.bat, click on Properties, then onto the Security tab.
+   - Click on Users, then the Edit button on the right side. Now select Users again.
+   - The program needs at least the following permissions: Modify, Read & execute, Read, and Write.
    You could also pick Full Control and give the program all permissions that way.
    
    Your antivirus or firewall could also be blocking the program.
