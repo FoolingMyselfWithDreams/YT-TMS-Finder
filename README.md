@@ -65,8 +65,8 @@ find_stable.py [-h] [-i] [-s] [-v] [-t THRESHOLD] [-m THREADS] [-c CHANNEL_URL] 
 1. ```-uf``` takes links from urls.txt to check multiple channels and playlists one after another
 1. ```-id``` to check only one video ID
 1. ```-r``` for restore file (This restore file has to be the html source of a youtube channel)
-1. ```-mnd``` set the min duration of videos that you want to check
-1. ```-mxd``` set the max duration of videos that you want to check
+1. ```-mnd``` set the min duration in seconds of videos that you want to check
+1. ```-mxd``` set the max duration in seconds of videos that you want to check
 1. ```-html``` force the alternative way of gathering URLs and video durations through browser automation
    
 
