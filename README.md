@@ -267,6 +267,8 @@ This list might contain multiple python.exe, try disabling all but one and try t
    - Click on Users, then the Edit button on the right side. Now select Users again.
    - The program needs at least the following permissions: Modify, Read & execute, Read, and Write.
    You could also pick Full Control and give the program all permissions that way.
+
+   You will have to do this for every .bat file in the folder.
    
    Your antivirus or firewall could also be blocking the program.
 
