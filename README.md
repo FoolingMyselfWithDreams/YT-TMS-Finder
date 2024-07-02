@@ -91,7 +91,7 @@ pip install -r requirements.txt
 ```
 If it says "Python is not being recognised as an internal command", please have a look at [this](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#python-is-not-being-recognised-as-an-internal-command).
 
-6. If you have problems installing PyAudio, skip to the next step.
+6. If you have problems installing PyAudio, move on to 7. for now.
 
 7. To make the installation easier, we'll use chocolatey which is just like brew, pip, or other module utilities. Press the Windows Key, search for CMD, right click on CMD and choose to open it in Administrator mode, copy & paste this command and press Enter:
 ```
