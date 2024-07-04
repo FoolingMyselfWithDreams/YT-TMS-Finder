@@ -90,7 +90,7 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
    If for some reason you can't rename any problematic folders, move on to the [Alternative Installation](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#alternative-installation-process).
 6. Right-click on Install.bat and choose "Run as Administrator".
 7. If it says "Python is not being recognised as an internal command", please have a look at [this](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#python-is-not-being-recognised-as-an-internal-command).
-   You will have to start Install.bat in Administrator mode again after resolving this error.
+   You will have to run Install.bat as Administrator mode again after resolving this error.
 8. If you had any problems with installing PyAudio, click [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#pyaudio-errors).
 9. Now double click on "# TMS Finder" inside the YT-TMS-Finder folder and follow the instructions.
 10. If you see any errors, please have a look at the [Common Problems section](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#common-problems).
