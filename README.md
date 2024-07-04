@@ -80,14 +80,19 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 1. Install any program that opens .zip files like WinRar, WinZip, 7-Zip or any of the other available .zip programs.
 2. Find the newest release of TMS Finder by clicking [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/releases). You can download it by clicking on "Source code (zip)" on the bottom.
 3. Extract the file (right click .zip file and click "Extract here"). This puts all the TMS Finder files in a new folder which is named YT-TMS-Finder-"Version Number".
-4. Go to the YT-TMS-Finder folder, right-click on Install.bat and choose "Run as Administrator".
-5. If it says "Python is not being recognised as an internal command", please have a look at [this](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#python-is-not-being-recognised-as-an-internal-command).
-7. If you had any problems with installing PyAudio, click [here]().
+4. Go to the YT-TMS-Finder folder.
+   Please make sure that the folder path doesn't have any of the following characters: ```@ $ % & \ / : * ? " ' < > | ~ ` # ^ + = { } [ ] () ; !```
+   For example, if your folder path would be C:\Users\Admin\@Downloads\YT-TMS-Finder-1.0.5(2)\YT-TMS-Finder-1.0.5, then you would have to rename it to C:\Users\Admin\Downloads\YT-TMS-Finder-1.0.5\YT-TMS-Finder-1.0.5, removing @ and ().
+   If for some reason you can't rename any problematic folders, move on to the [Alternative Installation](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/edit/master/README.md#alternative-installation-process)
+5. Right-click on Install.bat and choose "Run as Administrator".
+6. If it says "Python is not being recognised as an internal command", please have a look at [this](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#python-is-not-being-recognised-as-an-internal-command).
+7. If you had any problems with installing PyAudio, click [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/edit/master/README.md#pyaudio-errors).
 8. Now double click on "# TMS Finder" inside the YT-TMS-Finder folder and follow the instructions.
-9. Check for any matches! They will be displayed inside a file called "MATCHES.txt" which will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "missed.txt" as well.
+9. If you see any errors, please have a look at the [Common Problems section](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/edit/master/README.md#common-problems).
+10. Check for any matches! They will be displayed inside a file called "MATCHES.txt" which will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "missed.txt" as well.
 
 
-Alternative Installation Process:
+### Alternative Installation Process:
 
 1. Make sure you have [Python 3](https://www.python.org/downloads/) installed. Click "Add Python to your PATH" during the install.
 2. Install any of the programs that opens .zip files.
@@ -112,12 +117,7 @@ If it says "Python is not being recognised as an internal command", please have 
 
 8. Great! Now you have Chocolately installed. Next we'll install the chromedriver and bs4 (Beautiful Soup). If you already have the chromedriver you can skip this step. Close the previous CMD window and open a new CMD in administrator mode, then run:
 ``` 
-choco install chromedriver  
-```
-When it asks you to run the script, type in A and press Enter.
-Afterwards type in this and press Enter:
-```
-pip install bs4  
+choco install chromedriver -y
 ```
 
 9. In order to download audio from YouTube we'll need ffmpeg. We'll download this as well. If you already have ffmpeg you can skip this step. In the same CMD window, run:
