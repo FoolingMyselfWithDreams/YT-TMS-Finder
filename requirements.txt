@@ -10,4 +10,5 @@ pydub
 black
 flake8
 selenium
+bs4
 yt-dlp
