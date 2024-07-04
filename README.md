@@ -77,10 +77,22 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 
 ## How to set up on Windows
 
+1. Install any program that opens .zip files like WinRar, WinZip, 7-Zip or any of the other available .zip programs.
+2. Find the newest release of TMS Finder by clicking [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/releases). You can download it by clicking on "Source code (zip)" on the bottom.
+3. Extract the file (right click .zip file and click "Extract here"). This puts all the TMS Finder files in a new folder which is named YT-TMS-Finder-"Version Number".
+4. Go to the YT-TMS-Finder folder, right-click on Install.bat and choose "Run as Administrator".
+5. If it says "Python is not being recognised as an internal command", please have a look at [this](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#python-is-not-being-recognised-as-an-internal-command).
+7. If you had any problems with installing PyAudio, click [here]().
+8. Now double click on "# TMS Finder" inside the YT-TMS-Finder folder and follow the instructions.
+9. Check for any matches! They will be displayed inside a file called "MATCHES.txt" which will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "missed.txt" as well.
+
+
+Alternative Installation Process:
+
 1. Make sure you have [Python 3](https://www.python.org/downloads/) installed. Click "Add Python to your PATH" during the install.
 2. Install any of the programs that opens .zip files.
 3. Find the newest release of TMS Finder by clicking [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/releases). You can download it by clicking on "Source code (zip)" on the bottom.
-4. Extract the file (right click file and click "Extract here").
+4. Extract the file (right click .zip file and click "Extract here"). This puts all the TMS Finder files in a new folder which is named YT-TMS-Finder-"Version Number".
 5. Open a command prompt (Press Windows Key, search for CMD) and install the requirements by typing:
 ```
 cd "insert folder path to the requirements.txt file" (without quotes)
@@ -115,7 +127,7 @@ choco install ffmpeg -y
 
 10. If you had any problems with installing PyAudio, that's a common issue. The solution to downloading PyAudio if the normal ```pip install pyaudio``` fails, is this:
 - Go to https://pypi.org/project/PyAudio/#files and download the .whl file for your version of Python.
-Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file (cd "insert folder path" (without the quotes)) and do ```pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl``` or whatever .whl file suits your version of Python. Now you have it installed.
+Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file (cd "insert folder path" (without the quotes)) and do ```pip install PyAudio-0.2.14-cp312-cp312-win_amd64.whl``` or whatever .whl file suits your version of Python. Now you have it installed.
 
 11. Now double click on "# TMS Finder" or type the following into CMD and press Enter: ```python find_stable.py```
 
@@ -279,6 +291,12 @@ Confidence of a match: 8.
    Often this error happens because your Windows user account isn't automatically set to have Admin rights. You may want to look up on how to do change this to avoid this type of error in the future entirely.
    
    Your antivirus or firewall could also be blocking the program.
+
+6. ### PyAudio errors
+   If you had any problems with installing PyAudio, that's a common issue. The solution to downloading PyAudio if the normal install fails, is this:
+   Go to https://pypi.org/project/PyAudio/#files and download the .whl file for your version of Python.
+   Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file (type this into the CMD window:  cd "insert folder path" (without the quotes)), press Enter and then
+   type this in and press Enter: ```pip install PyAudio-0.2.14-cp312-cp312-win_amd64.whl``` or whatever .whl file suits your version of Python. Now you have it installed.
 
 ## Contributing
 
