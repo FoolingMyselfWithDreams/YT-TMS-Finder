@@ -81,15 +81,20 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 2. Find the newest release of TMS Finder by clicking [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/releases). You can download it by clicking on "Source code (zip)" on the bottom.
 3. Extract the file (right click .zip file and click "Extract here"). This puts all the TMS Finder files in a new folder which is named YT-TMS-Finder-"Version Number".
 4. Go to the YT-TMS-Finder folder.
-   Please make sure that the folder path doesn't have any of the following characters: ```@ $ % & \ / : * ? " ' < > | ~ ` # ^ + = { } [ ] () ; !```
-   For example, if your folder path would be C:\Users\Admin\@Downloads\YT-TMS-Finder-1.0.5(2)\YT-TMS-Finder-1.0.5, then you would have to rename it to C:\Users\Admin\Downloads\YT-TMS-Finder-1.0.5\YT-TMS-Finder-1.0.5, removing @ and ().
+   Please make sure that the folder path doesn't have any of the following characters:
+
+   ```@ $ % & \ / : * ? " ' < > | ~ ` # ^ + = { } [ ] () ; !```
+
+   For example, if your folder path would be C:\Users\Admin\\@Downloads\YT-TMS-Finder-1.0.5(2)\YT-TMS-Finder-1.0.5, then you would have to rename it to C:\Users\Admin\Downloads\YT-TMS-Finder-1.0.5\YT-TMS-Finder-1.0.5, removing @ and ( ).
+
    If for some reason you can't rename any problematic folders, move on to the [Alternative Installation](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#alternative-installation-process).
-5. Right-click on Install.bat and choose "Run as Administrator".
-6. If it says "Python is not being recognised as an internal command", please have a look at [this](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#python-is-not-being-recognised-as-an-internal-command).
-7. If you had any problems with installing PyAudio, click [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#pyaudio-errors).
-8. Now double click on "# TMS Finder" inside the YT-TMS-Finder folder and follow the instructions.
-9. If you see any errors, please have a look at the [Common Problems section](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#common-problems).
-10. Check for any matches! They will be displayed inside a file called "MATCHES.txt" which will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "missed.txt" as well.
+6. Right-click on Install.bat and choose "Run as Administrator".
+7. If it says "Python is not being recognised as an internal command", please have a look at [this](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#python-is-not-being-recognised-as-an-internal-command).
+   You will have to start Install.bat in Administrator mode again after resolving this error.
+8. If you had any problems with installing PyAudio, click [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#pyaudio-errors).
+9. Now double click on "# TMS Finder" inside the YT-TMS-Finder folder and follow the instructions.
+10. If you see any errors, please have a look at the [Common Problems section](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#common-problems).
+11. Check for any matches! They will be displayed inside a file called "MATCHES.txt" which will be created in the folder so you don't have to check the progress constantly. If any videos get missed, they'll be logged in "missed.txt" as well.
 
 
 ### Alternative Installation Process:
