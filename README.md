@@ -100,7 +100,7 @@ Some unidentified music we find is different in BPM/pitch, therefore [this packa
 ### Alternative Installation Process:
 
 1. Make sure you have [Python 3](https://www.python.org/downloads/) installed. Click "Add Python to your PATH" during the install.
-2. Install any of the programs that opens .zip files.
+2. Install any program that opens .zip files like WinRar, WinZip, 7-Zip or any of the other available .zip programs.
 3. Find the newest release of TMS Finder by clicking [here](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder/releases). You can download it by clicking on "Source code (zip)" on the bottom.
 4. Extract the file (right click .zip file and click "Extract here"). This puts all the TMS Finder files in a new folder which is named YT-TMS-Finder-"Version Number".
 5. Open a command prompt (Press Windows Key, search for CMD) and install the requirements by typing:
