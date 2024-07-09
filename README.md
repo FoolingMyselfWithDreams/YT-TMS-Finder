@@ -303,6 +303,9 @@ Confidence of a match: 8.
    Then open up a command prompt (press Windows key and type CMD). Navigate to the folder with the .whl file (type this into the CMD window:  cd "insert folder path" (without the quotes)), press Enter and then
    type this in and press Enter: ```pip install PyAudio-0.2.14-cp312-cp312-win_amd64.whl``` or whatever .whl file suits your version of Python. Now you have it installed.
 
+7. ### HTTP Error 403: Forbidden
+   yt-dlp needs an update, replace the .exe file in the yt-dlp folder with the newest .exe version from [here](https://github.com/yt-dlp/yt-dlp/releases)
+
 ## Contributing
 
 If you'd like to contribute, these are the things that still need to be done:
