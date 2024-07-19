@@ -14,18 +14,14 @@ See you somewhere!
 
 --- FoolingMyselfWithDreams
 
-### V1.0.5
-Getting everything to a working state
+### V1.0.6
 
-New features:
-- Check multiple channels (-uf option)
-- Check playlists
-- New and faster video URL gathering (browser automation gathering still available to use)
-- Besides .mp3, accepts .flac and .wav files now
-- User queries for easier usage
-- Makes a copy of audio files, converts the copy to .mp3 with 320k bitrate and 44100 kHz sample rate to make the fingerprints always comparable (Fingerprinting audio files with
-  different sample rates and bitrates than the audio on YouTube previously caused fingerprints to not correctly match with downloaded songs)
-- More .bats
+Updates:
+
+- Title search
+- Easier, almost automatic install through Install.bat
+- Asks for advanced settings
+- Easier access to ignore option (Ignore previously checked videos)
 - Bug fixes
 
 ## What you need to know
