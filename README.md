@@ -25,7 +25,7 @@ Updates:
 - Easier access to ignore option (Ignore previously checked videos)
 - Bug fixes
   
-Please have a look at step 4 of [How to Install](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-set-up-on-windows) before using Install.bat or Update.bat
+Please have a look at step 4 of [How To Install](https://github.com/FoolingMyselfWithDreams/YT-TMS-Finder?tab=readme-ov-file#how-to-set-up-on-windows) before using Install.bat or Update.bat
 
 ## What you need to know
 
