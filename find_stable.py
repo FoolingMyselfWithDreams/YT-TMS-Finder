@@ -42,9 +42,7 @@ __   _______   ________  ___ _____  ______ _           _
   | |   | |     | | | |  | |/\__/ / | |   | | | | | (_| |  __/ |   
   \_/   \_/     \_/ \_|  |_/\____/  \_|   |_|_| |_|\__,_|\___|_|   
                                                                    
-                                                                       
-Enter a channel URL or playlist URL to begin.
-Example URL:  https://www.youtube.com/@texticks/videos
+                                                                      
 """)
 
 
@@ -78,6 +76,8 @@ class Finder:
             elif yesnoQuery.upper() == "N":
                 self.arguments.url_file = None
                 self.url_file = None
+                print(r"""Enter a channel URL or playlist URL to begin.
+            Example URL:  https://www.youtube.com/@texticks/videos""")
                 self.arguments.channel_url = input("URL: ")   #Example input: www.youtube.com/@GlitchxCity/videos
         
         # if there is a url, verify if it's a correct URL
