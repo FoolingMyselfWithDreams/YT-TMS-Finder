@@ -498,7 +498,7 @@ class Finder:
         else:
             yt_dlp_exec = "yt-dlp"
         path_yt_dlp_exec = os.path.join(dir_yt_dlp_dir, yt_dlp_exec)
-        cmd = [f"{path_yt_dlp_exec}", "--sleep-requests 1", "--no-warnings", "--flat-playlist", "--print-to-file", "\"%(id)s %(duration)d\n%(title)s\"", "channel_video_urls.txt", f"{self.channel_url}"]
+        cmd = ["yt-dlp", "--sleep-requests 1", "--no-warnings", "--flat-playlist", "--print-to-file", "\"%(id)s %(duration)d\n%(title)s\"", "channel_video_urls.txt", f"{self.channel_url}"]
         print(' '.join(cmd))
 
         #Delete video urls txt file in case it still exists from a previous session
