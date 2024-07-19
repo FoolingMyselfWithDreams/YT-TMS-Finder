@@ -29,6 +29,8 @@ currentTime = time(now.hour, now.minute, now.second)
 currentDate = date(now.year, now.month, now.day)
 start_time = tm.time()
 
+#sys.tracebacklimit = 0
+
 
 print(r"""
 Welcome to...
@@ -85,56 +87,125 @@ class Finder:
         # if no arguments were given by the user, ask for verbose, min-duration, max-duration and threads
         if len(sys.argv) == 1:
             expr_yesno = r"^[YN]$"
-            yesnoQuery = input("Display detailed messaging and completion percentage? Y/N ")
+            yesnoQuery = input("Do you want to use advanced search options? Y/N ")
             while re.match(expr_yesno, yesnoQuery, re.I) is None:
                 print("Invalid input")
                 yesnoQuery = input()
             if yesnoQuery.upper() == "Y":
-                self.arguments.verbose = True
-            elif yesnoQuery.upper() == "N":
-                pass
-
-            expr_duration = r"^(?:\d{1,2}:)?(?=[0-5]?\d:)([0-5]?\d:)?(?:[0-5]?\d)$"
-            minQuery = input("Set minimum duration of video length (min 0:00 (or no input), max 99:59:59): ")
-            while re.match(expr_duration, minQuery) is None and minQuery != "":
-                print("Invalid input")
-                minQuery = input()
-            if minQuery == "": pass
-            else: self.arguments.min_duration = self.countseconds(minQuery)
-
-            maxQuery = input("Set maximum duration of video length (min 0:00, max 99:59:59 (or no input)): ")
-            while re.match(expr_duration, maxQuery) is None and maxQuery != "":
-                print("Invalid input")
-                maxQuery = input()
-            if maxQuery == "": pass
-            else: self.arguments.max_duration = self.countseconds(maxQuery)
-
-            threadQuestion = "How many videos should be downloaded and checked at the same time? (recommended: 1 to 3): "
-            threadQuery = input(threadQuestion)
-            while threadQuery != "":
-                if re.match(r"^[1-9]\d*$", threadQuery) is None:
+                yesnoQuery = input("Display detailed messaging and completion percentage? Y/N ")
+                while re.match(expr_yesno, yesnoQuery, re.I) is None:
                     print("Invalid input")
-                    threadQuery = input()
+                    yesnoQuery = input()
+                if yesnoQuery.upper() == "Y":
+                    self.arguments.verbose = True
+                elif yesnoQuery.upper() == "N":
+                    pass
+
+                yesnoQuery = input("Ignore already checked videos? Y/N ")
+                while re.match(expr_yesno, yesnoQuery, re.I) is None:
+                    print("Invalid input")
+                    yesnoQuery = input()
+                if yesnoQuery.upper() == "Y":
+                    self.arguments.ignore = True
+                elif yesnoQuery.upper() == "N":
+                    pass
+
+                expr_duration = r"^(?:\d{1,2}:)?(?=[0-5]?\d:)([0-5]?\d:)?(?:[0-5]?\d)$"
+                minQuery = input("Set minimum duration of video length (min 0:00 (or no input), max 99:59:59): ")
+                while re.match(expr_duration, minQuery) is None and minQuery != "":
+                    print("Invalid input")
+                    minQuery = input()
+                if minQuery == "": pass
+                else: self.arguments.min_duration = self.countseconds(minQuery)
+
+                maxQuery = input("Set maximum duration of video length (min 0:00, max 99:59:59 (or no input)): ")
+                while re.match(expr_duration, maxQuery) is None and maxQuery != "":
+                    print("Invalid input")
+                    maxQuery = input()
+                if maxQuery == "": pass
+                else: self.arguments.max_duration = self.countseconds(maxQuery)
+
+                titleQuery = input("Use \"text\" to set anything that must be part of the title, use !\"text\" to set anything that can't be part of the title, no commas as seperator needed. Add one + without quotes if at least one \"text\" has to match rather than all of them (or no input to skip): ")
+                while self.verify_titles(titleQuery) is None and titleQuery != "":
+                    print("Invalid input")
+                    titleQuery = input()
+                if titleQuery == "": pass
                 else:
-                    if int(threadQuery) > 3 :
-                        cprint("\nWARNING: Temporary IP bans might occur while using a high number of frequent downloads.", "red")
-                        cprint("Do you want to proceed with " + threadQuery + " simultaneous downloads? Y/N ")
-                        yesnoQuery = input()
-                        while re.match(expr_yesno, yesnoQuery, re.I) is None:
-                            print("Invalid input")
+                    self.arguments.title = titleQuery
+                    print("Title sets are: " + " ".join(self.arguments.title.split()))
+
+                threadQuestion = "How many videos should be downloaded and checked at the same time? (recommended: 1 to 3): "
+                threadQuery = input(threadQuestion)
+                while threadQuery != "":
+                    if re.match(r"^[1-9]\d*$", threadQuery) is None:
+                        print("Invalid input")
+                        threadQuery = input()
+                    else:
+                        if int(threadQuery) > 3 :
+                            cprint("\nWARNING: Temporary IP bans might occur while using a high number of frequent downloads.", "red")
+                            cprint("Do you want to proceed with " + threadQuery + " simultaneous downloads? Y/N ")
                             yesnoQuery = input()
-                        if yesnoQuery.upper() == "Y":
+                            while re.match(expr_yesno, yesnoQuery, re.I) is None:
+                                print("Invalid input")
+                                yesnoQuery = input()
+                            if yesnoQuery.upper() == "Y":
+                                break
+                            else:
+                                threadQuery = input(threadQuestion)
+                        elif int(threadQuery) <= 3:
                             break
-                        else:
-                            threadQuery = input(threadQuestion)
-                    elif int(threadQuery) <= 3:
-                        break
-            if threadQuery == "": threadQuery = None
-            else: self.arguments.threads = int(threadQuery)
+                if threadQuery == "": threadQuery = None
+                else: self.arguments.threads = int(threadQuery)
+                
+            elif yesnoQuery.upper() == "N":
+                yesnoQuery = input("Display detailed messaging and completion percentage? Y/N ")
+                while re.match(expr_yesno, yesnoQuery, re.I) is None:
+                    print("Invalid input")
+                    yesnoQuery = input()
+                if yesnoQuery.upper() == "Y":
+                    self.arguments.verbose = True
+                elif yesnoQuery.upper() == "N":
+                    pass
+
+                yesnoQuery = input("Ignore already checked videos? Y/N ")
+                while re.match(expr_yesno, yesnoQuery, re.I) is None:
+                    print("Invalid input")
+                    yesnoQuery = input()
+                if yesnoQuery.upper() == "Y":
+                    self.arguments.ignore = True
+                elif yesnoQuery.upper() == "N":
+                    pass
+
+                threadQuestion = "How many videos should be downloaded and checked at the same time? (recommended: 1 to 3): "
+                threadQuery = input(threadQuestion)
+                while threadQuery != "":
+                    if re.match(r"^[1-9]\d*$", threadQuery) is None:
+                        print("Invalid input")
+                        threadQuery = input()
+                    else:
+                        if int(threadQuery) > 3 :
+                            cprint("\nWARNING: Temporary IP bans might occur while using a high number of frequent downloads.", "red")
+                            cprint("Do you want to proceed with " + threadQuery + " simultaneous downloads? Y/N ")
+                            yesnoQuery = input()
+                            while re.match(expr_yesno, yesnoQuery, re.I) is None:
+                                print("Invalid input")
+                                yesnoQuery = input()
+                            if yesnoQuery.upper() == "Y":
+                                break
+                            else:
+                                threadQuery = input(threadQuestion)
+                        elif int(threadQuery) <= 3:
+                            break
+                if threadQuery == "": threadQuery = None
+                else: self.arguments.threads = int(threadQuery)
         
         self.ignore_checked = self.arguments.ignore
         self.verbose = self.arguments.verbose
         self.speedmode = self.arguments.speedmode
+        self.title = self.arguments.title
+        print(self.title)
+        self.url_file = self.arguments.url_file
+        self.html_urls = self.arguments.html_urls
         self.vprint(str(self.arguments), "yellow")
         
         ### Make sure that there are no leftovers from previous runs
@@ -145,6 +216,13 @@ class Finder:
         for x in len.split(':'):
             seconds = seconds * 60 + int(x)
         return seconds
+    
+    def verify_titles(self, titles):
+        titles = titles.split()
+        for x in titles:
+            if re.match(r"^\+$ | ^\".*\" | ^!\".*\"", x):
+                return None
+        else: return True
         
         
     def verify_url(self, url):
@@ -269,12 +347,12 @@ class Finder:
         ### Setting up the command for the different modes
         if not self.speedmode:
             cmd = [
-                    f"{path_yt_dlp_exec}", "-x", "--audio-format", "mp3", "-f", "\"[asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2",
+                    "yt-dlp", "-x", "--audio-format", "mp3", "-f", "\"[asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2",
                     "--no-warnings", f"{url}", "-o", f"{destination_arg}"
                 ]
         else:
             cmd = [
-                    f"{path_yt_dlp_exec}", "-x", "--audio-format", "mp3", "-f", "\"[asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2", 
+                    "yt-dlp", "-x", "--audio-format", "mp3", "-f", "\"[asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2", 
                     "--no-warnings", "--postprocessor-args", "\"-ss 00:00:00.00 -t 00:00:15.00\"", f"{url}", "-o", f"{destination_arg}"
                 ]
         
@@ -293,12 +371,12 @@ class Finder:
                     print("Retrying to download in different format...")
                     if not self.speedmode:
                         cmd = [
-                            f"{path_yt_dlp_exec}", "-f", "\"m4a, [asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2",
+                            "yt-dlp", "-f", "\"m4a, [asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2",
                             "--no-warnings", f"{url}", "-o", f"{destination_arg}"
                         ]
                     else:
                         cmd = [
-                            f"{path_yt_dlp_exec}", "-f", "\"m4a, [asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2", 
+                            "yt-dlp", "-f", "\"m4a, [asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2", 
                             "--no-warnings", "--postprocessor-args", "\"-ss 00:00:00.00 -t 00:00:15.00\"", f"{url}", "-o", f"{destination_arg}"
                         ]
                     subprocess.check_output(' '.join(cmd))
@@ -316,9 +394,6 @@ class Finder:
                 ### completely exit program if this is what user wants
                 self.delete_mp3s()
                 exit()
-            except Exception as e:
-                print(e)
-                pass
             cprint("Video audio couldn't be downloaded. Skipping for now. Please check missed.txt for more info.", "red")
             with open("missed.txt", "a") as f:
                 f.write(f"{currentDate} {currentTime}: Could not check video with ID {id}. Please copy and paste this URL in your browser to check: 'youtube.com/watch?v={id}'\n")
@@ -423,8 +498,14 @@ class Finder:
         else:
             yt_dlp_exec = "yt-dlp"
         path_yt_dlp_exec = os.path.join(dir_yt_dlp_dir, yt_dlp_exec)
-        cmd = [f"{path_yt_dlp_exec}", "--sleep-requests 1", "--no-warnings", "--flat-playlist", "--print-to-file", "\"%(id)s %(duration)d\"", "channel_video_urls.txt", f"{self.channel_url}"]
+        cmd = [f"{path_yt_dlp_exec}", "--sleep-requests 1", "--no-warnings", "--flat-playlist", "--print-to-file", "\"%(id)s %(duration)d\n%(title)s\"", "channel_video_urls.txt", f"{self.channel_url}"]
         print(' '.join(cmd))
+
+        #Delete video urls txt file in case it still exists from a previous session
+        try:
+            os.remove("channel_video_urls.txt")
+        except OSError:
+            pass
         
         try:
             subprocess.check_output(' '.join(cmd))
@@ -440,13 +521,16 @@ class Finder:
 
         # Construct and return a list of videos, where each video is a dict
         # containing the video id and video duration in seconds.
-        video_ids, durations = [],[]
-        with open("channel_video_urls.txt", "r+") as f:
-            for x in f:
-                a = x.split()
-                if a[1] == "NA": continue
-                video_ids.append(a[0])
-                durations.append(int(a[1]))
+        video_ids, durations, titles = [],[],[]
+        with open("channel_video_urls.txt", "r+", errors='replace') as f:
+            for idx, x in enumerate(f, 1):
+                if(idx % 2 == 1):
+                    a = x.split()
+                    if a[1] == "NA": continue
+                    video_ids.append(a[0])
+                    durations.append(int(a[1]))
+                else: 
+                    titles.append(x)
 
         # Delete video urls txt file afterwards
         try:
@@ -456,11 +540,12 @@ class Finder:
 
 
         videos = []
-        for (video_id, duration) in zip(video_ids, durations):
+        for (video_id, duration, title) in zip(video_ids, durations, titles):
             videos.append(
                 {
                     "id" : video_id,
-                    "duration" : duration
+                    "duration" : duration,
+                    "title" : title
                 }
             )
         return videos
@@ -474,9 +559,9 @@ class Finder:
         watch_expr = r'href="/watch\?v=([a-zA-Z0-9_-]+)"'
         matches = re.finditer(watch_expr, source)
         
-        ### For each video, the id is put twice in the page source, 
-        ### so we have to use [::2] to grab only half of the ids
-        video_ids = [match.groups()[0] for match in matches][::2]
+        ### For each video, the id is put thrice in the page source, 
+        ### so we have to use [::3] to grab only one of the ids
+        video_ids = [match.groups()[0] for match in matches][::3]
         
         ### Get duration of video corresponding to each video id.
         soup = bs.BeautifulSoup(source, "html.parser")
@@ -484,11 +569,11 @@ class Finder:
         ### all time durations are contained within a tag with class
         ### "style-scope ytd-thumbnail-overlay-time-status-renderer"
         time_spans = soup.findAll(
-            "span", 
+            "span",
             {"class": "style-scope ytd-thumbnail-overlay-time-status-renderer"}
         )
         
-        raw_durations = [ts.text.strip() for ts in time_spans]
+        raw_durations = [ts.text.strip() for ts in time_spans[::2]]
         del time_spans
         
         ### Making video durations list
@@ -504,17 +589,26 @@ class Finder:
             ### Get total duration in seconds.
             duration = seconds + (minutes * 60) + (hours * 3600)
             durations.append(duration)
-            
+        
+        title_sp = soup.findAll(
+            "yt-formatted-string", 
+            {"id": "video-title"}
+        )
+
+        titles = [ts.text.strip() for ts in title_sp]
+        del title_sp
         # Construct and return a list of videos, where each video is a dict
-        # containing the video id and video duration in seconds.
+        # containing the video id, video duration in seconds and title.
         videos = []
-        for (video_id, duration) in zip(video_ids, durations):
+        for (video_id, duration, title) in zip(video_ids, durations, titles):
             videos.append(
                 {
                     "id" : video_id,
-                    "duration" : duration
+                    "duration" : duration,
+                    "title" : title
                 }
             )
+        print(videos)
         return videos
         
         
@@ -539,18 +633,61 @@ class Finder:
     
     
     def check_channel(self, min_duration, max_duration):
-        if self.arguments.html_urls == True:
+        if self.html_urls == True:
             #Get the HTML source of the channel's video section
             source = self.get_channel_source()
             videos = self.get_videos_html(source)
         else:
             videos = self.get_videos()
         
+        #sort title arguments
+        orSwitch = False
+        if self.title != "":
+            yesTitle, noTitle = [],[]
+            if "+" in self.title: orSwitch = True
+            temp_args = re.finditer(r"!?([\"\']).+?\1", self.title)
+            titleargs = []
+            for x in temp_args:
+                titleargs.append(x.group(0))
+            #print("titleargs: " + str(titleargs))
+            titleargs = [x.strip("'\"\'") for x in titleargs]
+
+            for x in titleargs:
+                if re.match(r"^![\"\']", x):
+                    noTitle.append(x[2:])
+                else: yesTitle.append(x)
+
+
         target_videos = []
         for video in videos:
-            ### this seems like complicated logic but it's exactly what we want, 
-            ### please fill in "(p^~q) or (p ^ (q^ (~r)))" on the website 
-            ### https://web.stanford.edu/class/cs103/tools/truth-table-tool/ to see for yourself
+            if self.title != "":
+                titleConflict = False
+                titleMatch = False
+
+                for x in yesTitle[:-1]:
+                    titleMatch = x.lower() in video["title"].lower()
+                    if not titleMatch and not orSwitch:
+                        titleConflict = True
+                        break
+                    if orSwitch and titleMatch:
+                        break
+                for x in yesTitle[-1:]:
+                    if x.lower() in video["title"].lower(): titleMatch = True
+                    elif not titleMatch: titleConflict = True
+
+                for x in noTitle:
+                    if titleConflict: break
+                    if x.lower() in video["title"].lower():
+                        titleConflict = True
+                        break
+
+                if orSwitch and not titleConflict and not titleMatch:
+                    titleConflict = True
+                #print("titleConflict final + " + str(titleConflict))
+
+                if titleConflict:
+                    continue
+
             correctDuration =  video["duration"] >= min_duration and video["duration"] <= max_duration
             if ((self.ignore_checked == False and correctDuration) 
                 or 
@@ -597,7 +734,7 @@ class Finder:
             for file in os.listdir("downloaded_mp3s"):
                 p = ExcThread(target=self.check_file, args=(os.path.join("downloaded_mp3s", file), self.arguments.threshold, ))
                 filename, file_extension = os.path.splitext(file)
-                self.sql.add_checked_id(filename)
+                self.sql.add_checked_id(filename) #this should only happen if it's really checked
                 jobs.append(p)
             
             for job in jobs:
@@ -605,7 +742,7 @@ class Finder:
             for job in jobs:
                 try:
                     job.join()
-                except SystemExit:
+                except (SystemExit, KeyboardInterrupt):
                     self.delete_mp3s()
                     sys.exit()
             
@@ -644,12 +781,13 @@ def get_arguments():
     parser.add_argument("-i", "--ignore", dest = "ignore", default=False, help="Ignore already checked videos", action='store_true')
     parser.add_argument("-s", "--speedmode", dest = "speedmode", help="Activate speed mode", action = "store_true")
     parser.add_argument("-v", "--verbose", dest = "verbose", help="Give Feedback, default = False", action = "store_true", default = False)
-    parser.add_argument("-t", "--threshold", dest = "threshold", action="store", type = int, help = "Set the threshold for the number of hash matches at which you are notified of a match, default is 20", default = 20)
+    parser.add_argument("-th", "--threshold", dest = "threshold", action="store", type = int, help = "Set the threshold for the number of hash matches at which you are notified of a match, default is 20", default = 20)
     parser.add_argument("-m", "--multi-threading", dest="threads", action="store",type=int, help="Amount of videos allowed to concurrently check, default is 1", default = 1)
     parser.add_argument("-c", "--channel", dest = "channel_url", help="Parse the channel url as command line argument")
     parser.add_argument("-uf", "--url-file", dest = "url_file", help = "Takes links from urls.txt to check multiple channels and playlists one after another.")
     parser.add_argument("-id" ,"--id", dest = "id", help = "Test a single video instead of a whole YT channel or playlist.")
     parser.add_argument("-r", "--restore-file", dest = "restore_file", help="Give a restore file to get the html source of a channel without opening the browser again")
+    parser.add_argument("-t", "--title", dest = "title", help = "Set anything that must be part of the title, use !(title) to set anything that can't be part of the title.", default = "")
     parser.add_argument("-mnd", "--min-duration", dest = "min_duration", default = 0, type = int, help = "Set the min duration of videos of the videos that you want to check.")
     parser.add_argument("-mxd", "--max-duration", dest = "max_duration", default = 360000, type = int, help = "Set the max duration of videos of the videos that you want to check.")
     parser.add_argument("-html", "--html-urls", dest = "html_urls", help = "Force the alternative way of gathering urls and video durations through browser automation.", action = "store_true", default = False)
