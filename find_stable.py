@@ -77,7 +77,7 @@ class Finder:
                 self.arguments.url_file = None
                 self.url_file = None
                 print(r"""Enter a channel URL or playlist URL to begin.
-            Example URL:  https://www.youtube.com/@texticks/videos""")
+         Example URL:  https://www.youtube.com/@texticks/videos""")
                 self.arguments.channel_url = input("URL: ")   #Example input: www.youtube.com/@GlitchxCity/videos
         
         # if there is a url, verify if it's a correct URL
