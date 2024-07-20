@@ -59,12 +59,13 @@ find_stable.py [-h] [-i] [-s] [-v] [-t THRESHOLD] [-m THREADS] [-c CHANNEL_URL] 
 1. ```-i``` ignore videos that were checked in another session already
 1. ```-s``` download only first 15 seconds of video. This speeds up the download and fingerprinting. [CAUTION: -s only makes sense to use if you know that you at least have the intro of a song fingerprinted, or if the intro musically is similar to parts of the rest of the song, and if you're only checking videos that have one song]
 1. ```-v``` for verbosity / detailed messaging
-1. ```-t``` to set the hash matches threshold (at which you will be notified of a match)
+1. ```-th``` to set the hash matches threshold (at which you will be notified of a match)
 1. ```-m``` multithreading, max number of videos to check at the same time, 3 is optimal & recommended
 1. ```-c``` to supply channel URL from command line, if this is not supplied, it will be asked automatically
 1. ```-uf``` takes links from urls.txt to check multiple channels and playlists one after another
 1. ```-id``` to check only one video ID
 1. ```-r``` for restore file (This restore file has to be the html source of a youtube channel)
+1. ```-t``` use 'text' to set anything that must be part of the title, use !'text' to set anything that can't be part of the title, use one + if at least one 'text' has to match rather than all of them
 1. ```-mnd``` set the min duration in seconds of videos that you want to check
 1. ```-mxd``` set the max duration in seconds of videos that you want to check
 1. ```-html``` force the alternative way of gathering URLs and video durations through browser automation
