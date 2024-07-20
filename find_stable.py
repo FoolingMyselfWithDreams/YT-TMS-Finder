@@ -787,7 +787,7 @@ def get_arguments():
     parser.add_argument("-uf", "--url-file", dest = "url_file", help = "Takes links from urls.txt to check multiple channels and playlists one after another.")
     parser.add_argument("-id" ,"--id", dest = "id", help = "Test a single video instead of a whole YT channel or playlist.")
     parser.add_argument("-r", "--restore-file", dest = "restore_file", help="Give a restore file to get the html source of a channel without opening the browser again")
-    parser.add_argument("-t", "--title", dest = "title", help = "Set anything that must be part of the title, use !(title) to set anything that can't be part of the title.", default = "")
+    parser.add_argument("-t", "--title", dest = "title", help = "Use 'text' to set anything that must be part of the title, use !'text' to set anything that can't be part of the title, use one + if at least one 'text' has to match rather than all of them", default = "")
     parser.add_argument("-mnd", "--min-duration", dest = "min_duration", default = 0, type = int, help = "Set the min duration of videos of the videos that you want to check.")
     parser.add_argument("-mxd", "--max-duration", dest = "max_duration", default = 360000, type = int, help = "Set the max duration of videos of the videos that you want to check.")
     parser.add_argument("-html", "--html-urls", dest = "html_urls", help = "Force the alternative way of gathering urls and video durations through browser automation.", action = "store_true", default = False)
