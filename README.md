@@ -18,7 +18,7 @@ See you somewhere!
 
 Updates:
 
-- Title search
+- Video title search
 - Easier, almost automatic install through Install.bat
 - Update requirements through Update.bat
 - Asks for advanced settings
