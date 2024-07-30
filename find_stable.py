@@ -349,12 +349,16 @@ class Finder:
         ### Setting up the command for the different modes
         if not self.speedmode:
             cmd = [
-                    "yt-dlp", "-x", "--audio-format", "mp3", "-f", "\"[asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2",
+                    #"yt-dlp", "-i", "-x", "--audio-format", "mp3", "-f", "\"[asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2",
+                    #"--no-warnings", f"{url}", "-o", f"{destination_arg}"
+                    "yt-dlp", "-f", "\"m4a, [asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2",
                     "--no-warnings", f"{url}", "-o", f"{destination_arg}"
                 ]
         else:
             cmd = [
-                    "yt-dlp", "-x", "--audio-format", "mp3", "-f", "\"[asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2", 
+                    #"yt-dlp", "-x", "--audio-format", "mp3", "-f", "\"[asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2", 
+                    #"--no-warnings", "--postprocessor-args", "\"-ss 00:00:00.00 -t 00:00:15.00\"", f"{url}", "-o", f"{destination_arg}"
+                    "yt-dlp", "-f", "\"m4a, [asr>44000]\"", "--sleep-requests 1", "--sleep-interval 1", "--max-sleep-interval 2", 
                     "--no-warnings", "--postprocessor-args", "\"-ss 00:00:00.00 -t 00:00:15.00\"", f"{url}", "-o", f"{destination_arg}"
                 ]
         
