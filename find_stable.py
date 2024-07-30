@@ -68,6 +68,7 @@ class Finder:
             if yesnoQuery.upper() == "Y":
                 try:
                     if os.path.getsize("urls.txt") > 0:
+                        self.arguments.url_file = True
                         self.url_file = True
                     else: raise Exception
                 except: 
@@ -203,7 +204,6 @@ class Finder:
         self.verbose = self.arguments.verbose
         self.speedmode = self.arguments.speedmode
         self.title = self.arguments.title
-        print(self.title)
         self.url_file = self.arguments.url_file
         self.html_urls = self.arguments.html_urls
         self.vprint(str(self.arguments), "yellow")
@@ -219,10 +219,12 @@ class Finder:
     
     def verify_titles(self, titles):
         titles = titles.split()
-        for x in titles:
-            if re.match(r"^\+$ | ^\".*\" | ^!\".*\"", x):
+        for idx, x in enumerate(titles, 1):
+            if re.match(r"^\+$|^\".*\"|^!\".*\"", x):
+                if(idx == len(titles)):
+                    return True
+            else:
                 return None
-        else: return True
         
         
     def verify_url(self, url):
